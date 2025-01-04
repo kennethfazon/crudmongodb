@@ -4,7 +4,7 @@ import { HiPencilAlt } from "react-icons/hi";
 
 const getTopics = async () => {
   try {
-    const res = await fetch("https://crudmongodb-t2j6.vercel.app/api/topics", {
+    const res = await fetch("https://mongo-five-sand.vercel.app/api/topics", {
       cache: "no-store",
     });
 

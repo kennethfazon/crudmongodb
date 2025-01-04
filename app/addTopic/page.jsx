@@ -18,7 +18,7 @@ export default function AddTopic() {
     }
 
     try {
-      const res = await fetch("https://crudmongodb-t2j6.vercel.app/api/topics", {
+      const res = await fetch("https://mongo-five-sand.vercel.app/api/topics", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
