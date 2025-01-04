@@ -4,7 +4,7 @@ import { HiPencilAlt } from "react-icons/hi";
 
 const getTopics = async () => {
   try {
-    const res = await fetch("https://mongo-five-sand.vercel.app/api/topics", {
+    const res = await fetch("/api/topics", {
       cache: "no-store",
     });
 
@@ -12,23 +12,14 @@ const getTopics = async () => {
       throw new Error("Failed to fetch topics");
     }
 
-    const data = await res.json();
-    console.log("Received topics:", data);  // Log to inspect the data structure
-    return data.topics || [];  // Return empty array if no topics found
+    return res.json();
   } catch (error) {
     console.log("Error loading topics: ", error);
-    return [];  // Return empty array in case of error
   }
 };
 
 export default async function TopicsList() {
-  const topics = await getTopics();  // Fetch topics
-
-  console.log("Topics data in component:", topics); // Log topics to inspect
-
-  if (!topics || topics.length === 0) {
-    return <p>No topics available.</p>;  // Fallback message if no topics
-  }
+  const { topics } = await getTopics();
 
   return (
     <>
