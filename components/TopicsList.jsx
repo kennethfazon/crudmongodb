@@ -13,15 +13,18 @@ const getTopics = async () => {
     }
 
     const data = await res.json();
-    return data.topics || []; // Ensure you return an empty array if no topics
+    console.log("Received topics:", data);  // Add logging to inspect the data structure
+    return data.topics || [];  // Return empty array if no topics found
   } catch (error) {
     console.log("Error loading topics: ", error);
-    return []; // Return an empty array in case of an error
+    return [];  // Return empty array in case of error
   }
 };
 
 export default async function TopicsList() {
-  const topics = await getTopics(); // No need to destructure anymore
+  const topics = await getTopics();  // Fetch topics
+
+  console.log("Topics data in component:", topics); // Log topics to inspect
 
   return (
     <>
@@ -45,7 +48,7 @@ export default async function TopicsList() {
           </div>
         ))
       ) : (
-        <p>No topics available.</p> // Add a fallback message in case topics array is empty
+        <p>No topics available.</p>  // Fallback message if no topics
       )}
     </>
   );
