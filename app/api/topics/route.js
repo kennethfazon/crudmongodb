@@ -12,7 +12,8 @@ export async function POST(request) {
 export async function GET() {
   await connectMongoDB();
   const topics = await Topic.find();
-  return NextResponse.json({ topics });
+  console.log("Topics retrieved from DB:", topics); // Log the topics from DB
+  return NextResponse.json({ topics: topics || [] }); // Ensure topics is always an array
 }
 
 export async function DELETE(request) {
