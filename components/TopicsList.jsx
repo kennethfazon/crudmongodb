@@ -1,12 +1,11 @@
 import Link from "next/link";
-import RemoveBtn from "./RemoveBtn";
-import { HiPencilAlt } from "react-icons/hi";
+import RemoveBtn from "./RemoveBtn"; // Assuming RemoveBtn is a custom button component for deleting
+import { HiPencilAlt } from "react-icons/hi"; // Pencil icon for edit button
 
+// Function to fetch topics from the backend
 const getTopics = async () => {
   try {
-    const res = await fetch("/api/topics", {
-      cache: "no-store",
-    });
+    const res = await fetch("/api/topics", { cache: "no-store" });
 
     if (!res.ok) {
       throw new Error("Failed to fetch topics");
@@ -19,7 +18,7 @@ const getTopics = async () => {
 };
 
 export default async function TopicsList() {
-  const { topics } = await getTopics();
+  const { topics } = await getTopics(); // Fetch topics data
 
   return (
     <>
@@ -34,9 +33,9 @@ export default async function TopicsList() {
           </div>
 
           <div className="flex gap-2">
-            <RemoveBtn id={t._id} />
+            <RemoveBtn id={t._id} /> {/* Custom Remove Button */}
             <Link href={`/editTopic/${t._id}`}>
-              <HiPencilAlt size={24} />
+              <HiPencilAlt size={24} /> {/* Edit icon */}
             </Link>
           </div>
         </div>
